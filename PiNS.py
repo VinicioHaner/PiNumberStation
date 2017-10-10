@@ -16,8 +16,8 @@ buzzer_number = 4
 
 monolith_on = False
 
-# Give the pifm extension executable rights.
-subprocess.call(["sudo", "chmod", "+x", "pifm"])
+# Give the PiStation extension executable rights.
+subprocess.call(["sudo", "chmod", "+x", "PiStation.py"])
 
 # Message to synthesize and broadcast
 message = "123456789 abcdefghijklmnopqrstuvwxyz"
@@ -70,7 +70,7 @@ def playMessage():
 	
 	print("Broadcast Begin..")
 
-	subprocess.call(["sudo", sys.path[0] + "/pifm", sys.path[0] + "/message.wav", freq])
+	subprocess.call(["sudo", "./PiStation.py", "message.wav", "-f " + freq])
 	
 	return
 	
@@ -179,6 +179,6 @@ else:
 		playMessage()
 		print("Playing..")
 
-#kill pifm because it doesn't kill itself, for some stupid reason.
-subprocess.call(["sudo", "killall", "pifm"])
+#kill PiStation because it doesn't kill itself, for some stupid reason.
+subprocess.call(["sudo", "killall", "PiStation.py"])
 print("Done")
